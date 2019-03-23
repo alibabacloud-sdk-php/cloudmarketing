@@ -2,7 +2,51 @@
 
 namespace AlibabaCloud\Cloudmarketing\V20180910;
 
+use AlibabaCloud\ApiResolverTrait;
 use AlibabaCloud\Rpc;
+
+/**
+ * Resolve Api based on the method name.
+ *
+ * @method DeleteCrowd deleteCrowd(array $options = [])
+ * @method FetchCrowdDefine fetchCrowdDefine(array $options = [])
+ * @method DeleteFile deleteFile(array $options = [])
+ * @method UpdateCrowd updateCrowd(array $options = [])
+ * @method ProcessAfterUploadFile processAfterUploadFile(array $options = [])
+ * @method SyncCrowd syncCrowd(array $options = [])
+ * @method DownloadUDReport downloadUDReport(array $options = [])
+ * @method DownloadCrowd downloadCrowd(array $options = [])
+ * @method FetchFileSchemaData fetchFileSchemaData(array $options = [])
+ * @method FetchTag fetchTag(array $options = [])
+ * @method UpdateCategory updateCategory(array $options = [])
+ * @method DescribeAuthBrand describeAuthBrand(array $options = [])
+ * @method FavoriteTag favoriteTag(array $options = [])
+ * @method DescribeTag describeTag(array $options = [])
+ * @method Auth2Brand auth2Brand(array $options = [])
+ * @method AnalysisCrowd analysisCrowd(array $options = [])
+ * @method FetchCrowd fetchCrowd(array $options = [])
+ * @method DescribeCrowd describeCrowd(array $options = [])
+ * @method CalCrowdScale calCrowdScale(array $options = [])
+ * @method DefineCrowd defineCrowd(array $options = [])
+ * @method DescribeCategory describeCategory(array $options = [])
+ * @method DescribeFile describeFile(array $options = [])
+ * @method DefineFileSchema defineFileSchema(array $options = [])
+ * @method RequestUploadFile requestUploadFile(array $options = [])
+ * @method ProcessAfterUpload processAfterUpload(array $options = [])
+ * @method FetchFileSchema fetchFileSchema(array $options = [])
+ * @method DescribeAuthChannelBrand describeAuthChannelBrand(array $options = [])
+ * @method DescribeChannelBrand describeChannelBrand(array $options = [])
+ * @method CreateCategory createCategory(array $options = [])
+ * @method DescribeBrand describeBrand(array $options = [])
+ * @method UpdateBrand updateBrand(array $options = [])
+ * @method CreateBrand createBrand(array $options = [])
+ * @method RedefineTag redefineTag(array $options = [])
+ * @method DefineTag defineTag(array $options = [])
+ */
+class CloudmarketingApiResolver
+{
+    use ApiResolverTrait;
+}
 
 class V20180910Rpc extends Rpc
 {
@@ -71,16 +115,16 @@ class SyncCrowd extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $channelBrands
      *
      * @return $this
      */
-    public function withChannelBrands(array $value)
+    public function withChannelBrands(array $channelBrands)
     {
-        $this->data['ChannelBrands'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['ChannelBrands.' . ($i + 1) . '.OuterBrandId'] = $value[$i]['OuterBrandId'];
-            $this->options['query']['ChannelBrands.' . ($i + 1) . '.OuterBrandName'] = $value[$i]['OuterBrandName'];
+        $this->data['ChannelBrands'] = $channelBrands;
+        foreach ($channelBrands as $depth1 => $depth1Value) {
+            $this->options['query']['ChannelBrands.' . ($depth1 + 1) . '.OuterBrandId'] = $depth1Value['OuterBrandId'];
+            $this->options['query']['ChannelBrands.' . ($depth1 + 1) . '.OuterBrandName'] = $depth1Value['OuterBrandName'];
         }
 
         return $this;
@@ -134,14 +178,14 @@ class DescribeAuthBrand extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $accountIds
      *
      * @return $this
      */
-    public function withAccountIds(array $value)
+    public function withAccountIds(array $accountIds)
     {
-        $this->data['AccountIds'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['AccountIds'] = $accountIds;
+        foreach ($accountIds as $i => $iValue) {
             $this->options['query']['AccountIds.' . ($i + 1)] = $iValue;
         }
 
@@ -160,14 +204,14 @@ class FavoriteTag extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $tagIds
      *
      * @return $this
      */
-    public function withTagIds(array $value)
+    public function withTagIds(array $tagIds)
     {
-        $this->data['TagIds'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['TagIds'] = $tagIds;
+        foreach ($tagIds as $i => $iValue) {
             $this->options['query']['TagIds.' . ($i + 1)] = $iValue;
         }
 
@@ -194,14 +238,14 @@ class DescribeTag extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $statusList
      *
      * @return $this
      */
-    public function withStatusList(array $value)
+    public function withStatusList(array $statusList)
     {
-        $this->data['StatusList'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['StatusList'] = $statusList;
+        foreach ($statusList as $i => $iValue) {
             $this->options['query']['StatusList.' . ($i + 1)] = $iValue;
         }
 
@@ -220,17 +264,17 @@ class Auth2Brand extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $channelBrandReqs
      *
      * @return $this
      */
-    public function withChannelBrandReqs(array $value)
+    public function withChannelBrandReqs(array $channelBrandReqs)
     {
-        $this->data['ChannelBrandReqs'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['ChannelBrandReqs.' . ($i + 1) . '.ChannelType'] = $value[$i]['ChannelType'];
-            foreach ($value[$i]['OuterBrandIds'] as $j => $jValue) {
-                $this->options['query']['ChannelBrandReqs.' . ($i + 1) . '.OuterBrandId.' . ($j + 1)] = $jValue;
+        $this->data['ChannelBrandReqs'] = $channelBrandReqs;
+        foreach ($channelBrandReqs as $depth1 => $depth1Value) {
+            $this->options['query']['ChannelBrandReqs.' . ($depth1 + 1) . '.ChannelType'] = $depth1Value['ChannelType'];
+            foreach ($depth1Value['OuterBrandId'] as $i => $iValue) {
+                $this->options['query']['ChannelBrandReqs.' . ($depth1 + 1) . '.OuterBrandId.' . ($i + 1)] = $iValue;
             }
         }
 
@@ -247,14 +291,14 @@ class AnalysisCrowd extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $tagIds
      *
      * @return $this
      */
-    public function withTagIds(array $value)
+    public function withTagIds(array $tagIds)
     {
-        $this->data['TagIds'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['TagIds'] = $tagIds;
+        foreach ($tagIds as $i => $iValue) {
             $this->options['query']['TagIds.' . ($i + 1)] = $iValue;
         }
 
@@ -327,14 +371,14 @@ class DescribeFile extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $dataSchemaStatusList
      *
      * @return $this
      */
-    public function withDataSchemaStatusList(array $value)
+    public function withDataSchemaStatusList(array $dataSchemaStatusList)
     {
-        $this->data['DataSchemaStatusList'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['DataSchemaStatusList'] = $dataSchemaStatusList;
+        foreach ($dataSchemaStatusList as $i => $iValue) {
             $this->options['query']['DataSchemaStatusList.' . ($i + 1)] = $iValue;
         }
 
@@ -351,19 +395,19 @@ class DefineFileSchema extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $fileColumns
      *
      * @return $this
      */
-    public function withFileColumns(array $value)
+    public function withFileColumns(array $fileColumns)
     {
-        $this->data['FileColumns'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['FileColumns.' . ($i + 1) . '.Head'] = $value[$i]['Head'];
-            $this->options['query']['FileColumns.' . ($i + 1) . '.DataType'] = $value[$i]['DataType'];
-            $this->options['query']['FileColumns.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
-            $this->options['query']['FileColumns.' . ($i + 1) . '.Index'] = $value[$i]['Index'];
-            $this->options['query']['FileColumns.' . ($i + 1) . '.ColumnType'] = $value[$i]['ColumnType'];
+        $this->data['FileColumns'] = $fileColumns;
+        foreach ($fileColumns as $depth1 => $depth1Value) {
+            $this->options['query']['FileColumns.' . ($depth1 + 1) . '.Head'] = $depth1Value['Head'];
+            $this->options['query']['FileColumns.' . ($depth1 + 1) . '.DataType'] = $depth1Value['DataType'];
+            $this->options['query']['FileColumns.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            $this->options['query']['FileColumns.' . ($depth1 + 1) . '.Index'] = $depth1Value['Index'];
+            $this->options['query']['FileColumns.' . ($depth1 + 1) . '.ColumnType'] = $depth1Value['ColumnType'];
         }
 
         return $this;
@@ -467,17 +511,17 @@ class RedefineTag extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $optionDefines
      *
      * @return $this
      */
-    public function withOptionDefines(array $value)
+    public function withOptionDefines(array $optionDefines)
     {
-        $this->data['OptionDefines'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['OptionDefines.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
-            $this->options['query']['OptionDefines.' . ($i + 1) . '.Define'] = $value[$i]['Define'];
-            $this->options['query']['OptionDefines.' . ($i + 1) . '.Value'] = $value[$i]['Value'];
+        $this->data['OptionDefines'] = $optionDefines;
+        foreach ($optionDefines as $depth1 => $depth1Value) {
+            $this->options['query']['OptionDefines.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            $this->options['query']['OptionDefines.' . ($depth1 + 1) . '.Define'] = $depth1Value['Define'];
+            $this->options['query']['OptionDefines.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
         }
 
         return $this;
@@ -505,17 +549,17 @@ class DefineTag extends V20180910Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $optionDefines
      *
      * @return $this
      */
-    public function withOptionDefines(array $value)
+    public function withOptionDefines(array $optionDefines)
     {
-        $this->data['OptionDefines'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['OptionDefines.' . ($i + 1) . '.Name'] = $value[$i]['Name'];
-            $this->options['query']['OptionDefines.' . ($i + 1) . '.Define'] = $value[$i]['Define'];
-            $this->options['query']['OptionDefines.' . ($i + 1) . '.Value'] = $value[$i]['Value'];
+        $this->data['OptionDefines'] = $optionDefines;
+        foreach ($optionDefines as $depth1 => $depth1Value) {
+            $this->options['query']['OptionDefines.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+            $this->options['query']['OptionDefines.' . ($depth1 + 1) . '.Define'] = $depth1Value['Define'];
+            $this->options['query']['OptionDefines.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
         }
 
         return $this;
